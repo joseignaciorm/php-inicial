@@ -1,6 +1,6 @@
 <?php
 
-require_once './libs/DB.php';
+require_once '../libs/DB.php';
 
 class ModeloBase extends DB {
 	public $db;
@@ -8,22 +8,22 @@ class ModeloBase extends DB {
 
 	public function __construct() {
 		$this->db = new DB();
-		$this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $this->db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+		/*$this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $this->db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);*/
 	}
 
 	public function insertar($tabla, $datos) {
-		try {
+		//try {
 			$llaves = array_keys($datos);
 	    $sql = "INSERT INTO $tabla (".implode(", ", $llaves).") \n";
 	    $sql .= "VALUES ( :".implode(", :",$llaves).")";
 	    $q = $this->db->prepare($sql);
 	    return $q->execute($datos);
-		} catch (PDOException $e) {
+		/*} catch (PDOException $e) {
 			$_SESSION['mensaje'] = $e->getMessage();
 		} catch (Exception $e) {
 			$_SESSION['mensaje'] = $e->getMessage();
-		}
+		}*/
 	}
 
 	public function consultarRegistro($query) {

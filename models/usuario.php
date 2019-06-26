@@ -35,12 +35,17 @@ class Usuario extends ModeloBase {
 		$this->password = $password;
 	}
 
-	function guardarUsuario($datos) {
+	
+	public function guardarUsuario($datos) {
+		echo "Datos 3";
+		var_dump($datos);
 		$db = new ModeloBase();
-		$datos['id_rol'] = 2;
+		//$datos['id_rol'] = 2;
 		$insertar = $db->insertar('usuarios', $datos);
 		if ($insertar == true) {
 			$_SESSION['mensaje'] = 'Registro exitoso';
+		} else {
+			$_SESSION['mensaje'] = 'Mensaje no enviado';;
 		}
 	}
 
@@ -49,5 +54,6 @@ class Usuario extends ModeloBase {
 		$query = "SELECT * FROM usuarios WHERE apodo = '".$apodo. "' AND password = '".$password . "'";
 		return $respuesta = $db->consultarRegistro($query);
 	}
+
 
 }
