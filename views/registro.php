@@ -5,25 +5,55 @@
     $usuario = new UsuarioController();
     $usuario->registro();
 
+    session_start();
     #SESIONES: Forma de almacenar datos de manera individual utilizando un identificador.
     # Función nativa: session_start();
 
     #Para asignar una variable a una sesión: $_SESSION['dato'] = 'valor';
-        # $SESSION['rol'] = 'admin';
+        # $_SESSION['rol'] = 'admin';
 
     # Para destruir una sesión: session_destroy(;)
 
-    if(isset($_POST['registrar'])) {
-        
-        $datos = array(
-            'nombre' => $_POST['nombre'],
-            'apodo' => $_POST['apodo'],
-            'email' => $_POST['email'],
-            'password' => md5($_POST['password'])
-        );
 
-        var_dump($datos);    
-        $usuario->guardarUsuario($datos);
+    # $_GET['variable]; $_GET['variable];
+
+    #CSRF
+
+    if(empty($_SESSION['key'])) {
+        # Cadena de encriptación segura. Métodos de encriptación =>
+        # bin2hex(); Devuelve una cadena de tipo ascii de un string
+        # random_bytes(tamaño); Genera un string de bites aleatorio
+        $_SESSION['key'] = bin2hex( random_bytes(32) );
+        
+    }
+
+    //echo $_SESSION['key'];
+
+
+    #Creamos un CSRF token dinámico que debe ser exactamente igual al de la cadena de encriptación
+    $csrf = hash_hmac('sha256', 'registro.php', $_SESSION['key']); //Este token hay que pasarlo a través del formulario
+
+
+    if(isset($_POST['registrar'])) {
+
+        if (hash_equals($csrf, $_POST['csrf'])) {
+
+            $datos = array(
+                'nombre' => $_POST['nombre'],
+                'apodo' => $_POST['apodo'],
+                'email' => $_POST['email'],
+                'password' => md5($_POST['password'])
+            );
+    
+            //var_dump($datos);    
+            $usuario->guardarUsuario($datos);
+
+        } else {
+
+            header("Location: error.php");
+            die();
+
+        }
 
     }
 
@@ -36,6 +66,8 @@
                     <div class="image--points"></div>
                 </div>
             </div>
+<?php //phpinfo()?>
+        
 <!-- Start Form -->
             <div class="col-lg form-center d-flex justify-content-center align-items-center">
                 <div class="container-form">
@@ -46,10 +78,13 @@
                     <!-- enctype multipart/form-data permite agregar archivos -->
                     <?php
                         if(isset($_SESSION['mensaje'])) {
+
                             echo "<div class='alert alert-primary' role='alert'>".$_SESSION['mensaje']."</div>";
                         }
                     ?>
                     <form action="registro.php" method="POST" name="registroForm" id="registroForm">
+
+                        <input type="hidden" name="csrf" id="csrf" value="<?php echo $csrf?>">
 
                         <div class="row">
                             <div class="col-lg">

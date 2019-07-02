@@ -13,9 +13,9 @@
 
 class DB extends PDO {
 	private $hostname = 'localhost';
-	private $database = 'blogcursophp';
+	private $database = 'cms';
 	private $username = 'root';
-	private $password = '';
+	private $password = 'root';
 	private $pdo;
 	private $sQuery;
 	private $bConnected = false;

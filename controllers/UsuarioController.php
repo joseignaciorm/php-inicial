@@ -10,8 +10,7 @@ class UsuarioController {
     }
 
     public function guardarUsuario($datos){
-        echo "Datos 2";
-        var_dump($datos);
+        
         $errores = '';
 
         if(!isset($datos['email'])) {
@@ -20,6 +19,8 @@ class UsuarioController {
 
         $usuario = new Usuario();
         $usuario->guardarUsuario($datos);
+
+        session_destroy();
 
     }
 

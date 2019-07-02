@@ -37,8 +37,7 @@ class Usuario extends ModeloBase {
 
 	
 	public function guardarUsuario($datos) {
-		echo "Datos 3";
-		var_dump($datos);
+		
 		$db = new ModeloBase();
 		//$datos['id_rol'] = 2;
 		$insertar = $db->insertar('usuarios', $datos);
