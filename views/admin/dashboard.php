@@ -1,84 +1,117 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
-    <link rel="stylesheet" href="../../assets/css/dashboard.css">
-    <title>Dashboard</title>
-</head>
-<body>
-<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-  <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">My blog</a>
-  <input class="form-control form-control-dark w-100" type="text" placeholder="Buscar" aria-label="Search">
-  <ul class="navbar-nav px-3">
-    <li class="nav-item text-nowrap">
-      <a class="nav-link" href="#">Salir</a>
-    </li>
-  </ul>
-</nav>
 
-<div class="container-fluid">
-  <div class="row p-5">
-    <nav class="col-md-2  d-none d-md-block bg-light sidebar">
-      <div class="sidebar-sticky">
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link active" href="#">
-              <span data-feather="home"></span>
-              Inicio <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file"></span>
-              Dashboard
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="shopping-cart"></span>
-              Publicaciones
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="users"></span>
-              Usuarios
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="bar-chart-2"></span>
-              Comentarios
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="layers"></span>
-              Personalizar
-            </a>
-          </li>
-        </ul>
+<div class="container-fluid dashboard">
+  <div class="row">
+      <?php require_once 'navbar.php'; ?>
+
+      <div id="main" class="p-0 container-fluid main">
+        <header class="pr-3 pl-3 pr-md-3 pl-md-3 pr-lg-5 pl-lg-5 d-flex justify-content-end align-items-center header">
+          <div class="w-100 text-sm-left text-md-center">
+            <h1 class="m-0 d-lg-none side__nav--title"><?php echo NOMBRE_BLOG; ?></h1>
+          </div>
+          <div class="btn-group container__user">
+            <button type="button" class="p-0 d-flex align-items-center position-relative container__user--btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <p class="m-0 mr-4 username">Usuario</p>
+              <span class="arrow--left" ></span>
+                <i class="fas fa-angle-down username--arrow" id="dropdownMenuButton"></i>
+              </span>
+            </button>
+            <!--<div class="dropdown-menu dropdown-menu-right">
+              <a href="#" class="dropdown-item">User</a>
+              <a href="#" class="dropdown-item">User</a>
+            </div>-->
+          </div>
+
+
+          </header>
+          <div class="p-4 p-lg-5  main__container">
+              <div class="row m-0 mb-5">
+                  <h2>Dashboard</h2>
+              </div>
+              <div class="row m-0">
+                  <div class="mr-5 col-12 col-sm-3 col-md-3 col-lg-2 col-xl-2 card__stats">
+                      <p class="card__stats--name">Usuarios</p>
+                      <span class="card__stats--amount">100</span>
+                  </div>
+
+                  <div class="mr-5 col-12 col-sm-3 col-md-3 col-lg-2 col-xl-2 card__stats">
+                      <p class="card__stats--name">Usuarios</p>
+                      <span class="card__stats--amount">100</span>
+                  </div>
+
+                  <div class="mr-5 col-12 col-sm-3 col-md-3 col-lg-2 col-xl-2 card__stats">
+                      <p class="card__stats--name">Usuarios</p>
+                      <span class="card__stats--amount">100</span>
+                  </div>
+
+              </div>
+              <div class="row">
+                  <div class="pt-4 col-12 col-xl-6 last__publications">
+                      <h3 class="table--title">Últimos registros</h3>
+                      <table class="table">
+                          <thead class="t-head">
+                              <tr>
+                              <th scope="col">Título</th>
+                              <th scope="col">Comentarios</th>
+                              <th scope="col">Acciones</th>
+
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr>
+                              <td>Otto</td>
+                              <td>@mdo</td>
+                              <td>@mdo</td>
+
+                              </tr>
+
+                              <tr>
+                              <td>Thornton</td>
+                              <td>@fat</td>
+                              <td>@fat</td>
+
+                              </tr>
+
+                              <tr>
+                              <td>the Bird</td>
+                              <td>@twitter</td>
+                              <td>@twitter</td>
+
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+
+                  <div class="pt-4 col-12 col-xl-6 last__registers">
+                      <h3 class="table--title">Últimos registros</h3>
+                      <table class="table">
+                          <thead class="t-head">
+                              <tr>
+                              <th scope="col">Título</th>
+                              <th scope="col">Comentarios</th>
+
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr>
+                              <td>Otto</td>
+                              <td>@mdo</td>
+                              </tr>
+
+                              <tr>
+                              <td>Thornton</td>
+                              <td>@fat</td>
+                              </tr>
+
+                              <tr>
+                              <td>the Bird</td>
+                              <td>@twitter</td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+
       </div>
-    </nav>
-
-    <!--<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-      
-
-      <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
-
-      
-    </main>-->
+    </div>
   </div>
-  </div>
-
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-      <script>window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')</script><script src="/docs/4.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
-        <script src="dashboard.js"></script>
-</body>
-</html>
+</div>

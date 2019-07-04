@@ -1,5 +1,5 @@
 <?php
-  require_once 'controllers/BlogController.php';
+  require_once '../controllers/BlogController.php';
   $blog = new BlogController();
   $categorias = $blog->obtenerCategorias();
 

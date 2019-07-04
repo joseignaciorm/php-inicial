@@ -10,12 +10,12 @@
   </div>
   <ul class="m-0 p-0">
     <li class="mt-1 mb-1 active">
-      <a href="#" class="d-flex align-items-center side__nav--link">
+      <a href="index.php?page=blog" class="d-flex align-items-center side__nav--link">
         <i class="fas fa-home side__nav--icon nav-item-icon"></i>Inicio
       </a>
     </li>
     <li class="mt-1 mb-1">
-      <a href="#" class="d-flex align-items-center side__nav--link">
+      <a href="index.php?page=dashboard" class="d-flex align-items-center side__nav--link">
         <i class="fas fa-tachometer-alt side__nav--icon nav-item-icon"></i>Dashboard
       </a>
     </li>

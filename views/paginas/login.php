@@ -1,23 +1,30 @@
 <?php
-    require_once 'controllers/UsuarioController.php';
+
+    require_once '../controllers/UsuarioController.php';
     $usuario = new UsuarioController();
     $usuario->login();
-
-    if (isset($_POST['acceso'])) {
+    
+    if(isset($_POST['acceso'])) {
+        
         $datos = array(
-            'apodo'    => $_POST['apodo'],
-            'password' => md5($_POST['password'])
+            "apodo"     =>  $_POST['apodo'],
+            "password"  =>  md5($_POST['password'])
         );
+        
         $respuesta = $usuario->accesoUsuario($datos);
-    }
+        
+    } 
+
 ?>
-    <div class="container-fluid register-login">
+
+<div class="container-fluid register-login">
         <div class="row wrapper">
             <div class="col-lg padding-none bg-image-container">
                 <div class="container__image">
                     <div class="image--points"></div>
                 </div>
             </div>
+<!-- Start Form -->
             <div class="col-lg form-center d-flex justify-content-center align-items-center">
                 <div class="container-form">
                     <h1 class="register-login-h1">Acceso</h1>
@@ -40,7 +47,7 @@
                                 <label class="form-check-label order-2" for="remember">Recuérdame</label>
                                 <label class="label--ckecked order-1" for="remember"></label>
                             </div>
-                            <!--<a href="#" class="forgot__password--link">¿Olvidó su contraseña?</a>-->
+                            <a href="#" class="forgot__password--link">¿Olvidó su contraseña?</a>
                         </div>
                         <div class="d-flex justify-content-lg-between">
                             <button type="submit" class="btn btn-login align-self-center" name="acceso" id="acceso">Entrar</button>
@@ -48,6 +55,9 @@
                     </form>
                 </div>
             </div>
+        </div> <!-- End Start Form -->
 
-        </div>
     </div>
+</div>
+
+
