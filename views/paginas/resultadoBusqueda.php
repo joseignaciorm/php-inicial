@@ -1,19 +1,19 @@
 <?php
-  require_once 'controllers/BlogController.php';
+  require_once '../controllers/BlogController.php';
   $blog = new BlogController();
   $categorias = $blog->obtenerCategorias();
   #http://curso-php.test/cms/index.php?page=blog&cadena='nodejs'
   $cadena = $_GET['cadena']; #&cadena='nodejs'
-
+  
 
 ?>
 
   <nav class="nav navbar navbar-expand-lg d-lg-flex flex-lg-column align-items-lg-start">
     <div class="container-fluid d-flex justify-content-end display-lg-none">
-      <a class="gray-opacity" href="#">Iniciar sesión</a>
-      <a class="gray-opacity margin-left-20" href="#">Registro</a>
+      <a class="gray-opacity" href="index.php?page=login">Iniciar sesión</a>
+      <a class="gray-opacity margin-left-20" href="index.php?page=registro">Registro</a>
     </div>
-    <a class="navbar-brand nav--title" href="#"><?php echo NOMBRE_BLOG; ?></a>
+    <a class="navbar-brand nav--title" href="index.php?page=blog"><?php echo NOMBRE_BLOG; ?></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon d-flex flex-column justify-content-around">
         <div class="bar-nav rounded"></div>
@@ -24,8 +24,8 @@
 
     <div class="collapse navbar-collapse d-lg-flex justify-content-start" id="navbarSupportedContent">
       <div class="container-fluid d-flex justify-content-start display-lg-block">
-        <a class="gray-opacity" href="#">Iniciar sesión</a>
-        <a class="gray-opacity margin-left-20" href="#">Registro</a>
+        <a class="gray-opacity" href="index.php?page=login">Iniciar sesión</a>
+        <a class="gray-opacity margin-left-20" href="index.php?page=registro">Registro</a>
       </div>
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">

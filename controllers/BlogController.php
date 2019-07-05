@@ -16,9 +16,9 @@ class BlogController {
 			header('Location: index.php?page=login');
       die();
 		} else {
-			require_once('./views/includes/cabecera.php');
-    	require_once('./views/admin/publicar.php');
-    	require_once('./views/includes/pie.php');
+			require_once('../views/includes/cabecera.php');
+    		require_once('../views/admin/publicar.php');
+    		require_once('../views/includes/pie.php');
 		}
 	}
 
@@ -34,7 +34,7 @@ class BlogController {
 		#pathinfo — Devuelve información acerca de la ruta de un fichero
 		$tipoArchivo = strtolower(pathinfo($archivo, PATHINFO_EXTENSION));
 
-		$validar = getimagesize($portada['tmp_name']); #Tamalo de una imagen
+		$validar = getimagesize($portada['tmp_name']); #Tamaño de una imagen
 		if ($validar !== false) {
 
 			#Tamaño en bytes - Dividir 1024 por kb
@@ -89,10 +89,14 @@ class BlogController {
 		return $articulos->mostrarArticulos('', $limite); // Consulta tipo vacio para que traiga todos los registros
 	}
 
+								/***********************
+								 * Leer publicaciones *
+								 **********************/ 
+	
 	public function leerArticulo() {
-		require_once('./views/includes/cabecera.php');
-    require_once('./views/paginas/leerArticulo.php');
-    require_once('./views/includes/pie.php');
+		require_once('../views/includes/cabecera.php');
+    	require_once('../views/paginas/leerArticulo.php');
+    	require_once('../views/includes/pie.php');
 	}
 
 	public function obtenerArticulo($slug) {
@@ -108,7 +112,7 @@ class BlogController {
 		$id_articulo = $this->obtenerIdArticulo($datos['slug']);
 		$datos['id_articulo'] = $id_articulo;
 		//comentario, slug, id_usuario,id_articulo
-		unset($datos['slug']);
+		unset($datos['slug']); // Funcion para quitar un dato de un arreglo. En este caso quitamos slug para que no marque error al insertar
 		//comentario, id_usuario,id_articulo
 
 		return $articulo->guardarComentario($datos);
@@ -121,10 +125,16 @@ class BlogController {
 		return $blog->obtenerComentarios($id_articulo);
 	}
 
+
+
+								/***********************
+								 * Resultado busqueda *
+								 **********************/ 
+
 	public function resultadoBusqueda() {
-		require_once('./views/includes/cabecera.php');
-    	require_once('./views/paginas/resultadoBusqueda.php');
-    	require_once('./views/includes/pie.php');
+		require_once('../views/includes/cabecera.php');
+    	require_once('../views/paginas/resultadoBusqueda.php');
+    	require_once('../views/includes/pie.php');
 	}
 
 	public function buscarArticulos($cadena) {

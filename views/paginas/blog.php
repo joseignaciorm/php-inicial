@@ -4,10 +4,10 @@
   $blog = new BlogController();
   $categorias = $blog->obtenerCategorias();
 
-  /*if (isset($_POST['buscador'])) {
+  if (isset($_POST['buscador'])) {
     header('Location: index.php?page=buscar&cadena='.$_POST['cadena']);
     die();
-  }*/
+  }
 
 ?>
 
@@ -112,8 +112,10 @@
 
       <section class="row d-flex justify-content-between">
           <div class="col-12 col-xl-8">
-              <!-- Buscador -->
-              <form action="" method="POST" name="buscarForm" id="buscarForm">
+
+
+              <!-- ******************** Buscador ***************************** -->
+              <form action="index.php?page=blog" method="POST" name="buscarForm" id="buscarForm">
                 <div class="form-row align-items-center">
                   <div class="col-auto">
                     <div class="input-group mb-2">
@@ -126,7 +128,9 @@
                 </div>
               </form>
               <div class="clearfix">&nbsp;</div>
-              <!-- End Buscador -->
+              <!-- ******************** End buscador ***************************** -->
+
+
               <h2 class="h4 mb-5">ÚLTIMAS PUBLICACIONES</h2>
               <?php
                 $ultimos = $blog->mostrarArticulos('', 10);
