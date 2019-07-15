@@ -15,7 +15,8 @@
     <div class="container-fluid d-flex justify-content-end display-lg-none">
       <a class="gray-opacity" href="index.php?page=login">Iniciar sesión</a>
       <a class="gray-opacity margin-left-20" href="index.php?page=registro">Registro</a>
-      <a class="gray-opacity margin-left-20" target="_blank" href="https://wa.me/5213316923799?text=Hola, ¿me puedes ayudar?">Envíame un mensaje</a>
+      <a class="gray-opacity margin-left-20" target="_blank" href="https://wa.me/34699206774?text=Hola, ¿me puedes ayudar?">Envíame un mensaje</a>
+      <a class="gray-opacity margin-left-20" target="_blank" href="https://api.whatsapp.com/send/phone=34699206774&text=Hola, ¿me puedes ayudar?">Envíame un mensaje 2</a>
       <a class="gray-opacity margin-left-20" href="index.php?page=blog&lang=es">ES</a>
       <a class="gray-opacity margin-left-20" href="index.php?page=blog&lang=en">EN</a>
     </div>
@@ -133,13 +134,13 @@
 
               <h2 class="h4 mb-5">ÚLTIMAS PUBLICACIONES</h2>
               <?php
-                $ultimos = $blog->mostrarArticulos('', 10);
+                $ultimos = $blog->mostrarArticulos('', 20);
                 if (!empty($ultimos)) {
                   foreach ($ultimos as $r) { ?>
                     <div class="post">
                       <?php if ($r['portada']) { ?>
                         <div class="post__img__contain">
-                          <img class="post--img" src="portadas/<?=$r['portada'];?>" alt="">
+                          <img class="post--img" src="../portadas/<?=$r['portada'];?>" alt="">
                         </div>
                       <?php } ?>
                       <div class="post__description">
@@ -157,17 +158,25 @@
               ?>
           </div>
 
+                    <!-- *********************** 
+                        *** WIDGETS *** 
+                    ************************** -->
+
           <aside class="sidebar col-12 col-xl-3 d-lg-flex flex-xl-column">
               <div class="widget__videos text-center">
                 <a href=""><img src="https://img.youtube.com/vi/3rEWfnioZzs/hqdefault.jpg" alt="video"></a>
               </div>
-              <div class="widget__twitter text-center" style="overflow: scroll;">
-                <?php require_once 'views/widgets/timelineTwitter.php'; ?>
+              <div class="widget__twitter text-center" style="overflow: scroll">
+                <?php require_once '../views/widgets/timelineTwitter.php'; ?>
               </div>
               <div class="widget__mapa text-center">
-                <?php require_once 'views/widgets/mapa.php'; ?>
+                <?php require_once '../views/widgets/mapa.php'; ?>
               </div>
           </aside>
+                    <!-- *********************** 
+                        *** WIDGETS *** 
+                    ************************** -->
+
       </section>
 
   </div>

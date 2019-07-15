@@ -75,10 +75,14 @@
                   <?=strtoupper($r['titulo']);?>
                 </a>
               </h2>
+
               <div class="post">
+              <?php if ($r['portada']) { ?> 
                 <div class="post__img__contain">
-                  <img class="post--img" src="https://s3-us-west-2.amazonaws.com/devcodepro/media/tutorials/middlewares-en-nodejs-t1.jpg" alt="NodeJS">
+                  <img class="post--img" src="../portadas/<?= $r['portada']; ?>" alt="">
                 </div>
+              <?php } ?>
+
                 <div class="post__description">
                   <em class="post__description--em">Publicador por: <strong><?=$r['apodo']; ?></strong></em>
                   <div class="clearfix">&nbsp;</div>

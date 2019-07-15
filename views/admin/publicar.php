@@ -5,7 +5,11 @@
 
   if (isset($_POST['publicar'])) {
     $respuestaImagen = $blog->validarImagen($_FILES['portada']);
+    # Para decodificar un formato Jason usamos funcion nativa json_decode(value);
     $validarImagen = json_decode($respuestaImagen, true);
+    echo ($respuestaImagen);
+    var_dump($validarImagen);
+    
     if ($validarImagen['codigo'] == 200) {
       $datos = array(
         'titulo'       => $_POST['titulo'],
@@ -55,6 +59,7 @@
                     <input type="text" class="form-control" id="titulo" name="titulo" placeholder="">
                   </div>
                 </div>
+
                 <div class="form-row">
                   <div class="form-group col-md-6">
                     <label for="inputPassword4">Categoría</label>
@@ -79,18 +84,22 @@
                     </select>
                   </div>
                 </div>
+
                 <div class="form-group">
                   <label for="inputAddress">Resumen</label>
                   <input type="text" class="form-control" id="resumen" name="resumen" placeholder="">
                 </div>
+
                 <div class="form-group">
                   <label for="inputAddress2">Contenido</label>
                   <textarea class="form-control" id="contenido" name="contenido" rows="3"></textarea>
                 </div>
+
                 <div class="form-group">
                   <label for="inputAddress2">Portada</label>
                   <input type="file" class="form-control" id="portada" name="portada">
                 </div>
+                
                 <button type="submit" name="publicar" id="publicar" class="btn btn-primary">Publicar</button>
               </form>
             </div>

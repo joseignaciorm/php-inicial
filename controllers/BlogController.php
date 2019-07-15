@@ -28,13 +28,19 @@ class BlogController {
 	}
 
 	public function validarImagen($portada) {
+		//var_dump($portada);
+
 		$directorio = 'portadas/'; #Directorio en dónde guardamos la imagen
 		$archivo = $directorio.basename($portada['name']);
+		//echo $archivo."<br>";
 
 		#pathinfo — Devuelve información acerca de la ruta de un fichero
 		$tipoArchivo = strtolower(pathinfo($archivo, PATHINFO_EXTENSION));
+		//echo $tipoArchivo."<br>";
 
 		$validar = getimagesize($portada['tmp_name']); #Tamaño de una imagen
+		//var_dump($validar);
+
 		if ($validar !== false) {
 
 			#Tamaño en bytes - Dividir 1024 por kb
@@ -42,6 +48,9 @@ class BlogController {
 			if ($portada['size'] > 500000) {
 				$respuesta['mensaje'] = "El archivo es muy grande";
 				$respuesta['codigo'] = 400;
+			
+			# Formato Json: {mensaje: 'Mensaje', codigo: 200}
+			# Funcion nativa PHP para enviar Json json_encode(value);
 				return json_encode($respuesta, JSON_PRETTY_PRINT);
 			}
 
@@ -64,11 +73,14 @@ class BlogController {
 			$respuesta['codigo'] = 400;
 		}
 		return json_encode($respuesta, JSON_PRETTY_PRINT);
+
+		//var_dump($respuesta);
+		//die();
 	}
 
 	public function guardarPublicacion($datos) {
-
-		$directorio = 'portadas/'; #Directorio donde guardamos las imagenes
+		//var_dump ($datos);
+		$directorio = '../portadas/'; #Directorio donde guardamos las imagenes
 		$portada = $datos['portada'];
 		$archivo = $directorio.basename($portada['name']);
 
